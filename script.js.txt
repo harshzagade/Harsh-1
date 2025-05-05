@@ -1,0 +1,21 @@
+document.getElementById('speak-btn').addEventListener('click', function() {
+    let text = document.getElementById('text-input').value;
+    if (text === "") {
+        document.getElementById('status').textContent = "Please enter some text!";
+        document.getElementById('status').style.color = "red";
+        return;
+    }
+
+    // Create a new SpeechSynthesisUtterance object
+    let utterance = new SpeechSynthesisUtterance(text);
+
+    // Set language and voice if necessary
+    utterance.lang = 'en-US';
+
+    // Speak the text
+    speechSynthesis.speak(utterance);
+
+    // Update status
+    document.getElementById('status').textContent = "Speaking...";
+    document.getElementById('status').style.color = "green";
+});
